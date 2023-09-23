@@ -62,17 +62,17 @@ function sortingTrains(trains_data) {
       return seatsAvailableComp;
     }
 
-    // If price and seatsAvailable are the same, sort by departureTime in descending order
+   
     const departureTimeA = a.departureTime.Hours * 60 + a.departureTime.Minutes;
     const departureTimeB = b.departureTime.Hours * 60 + b.departureTime.Minutes;
     return departureTimeB - departureTimeA;
   }
 
-  // Bubble sort implementation
+
   for (let i = 0; i < trains_data.length - 1; i++) {
     for (let j = 0; j < trains_data.length - i - 1; j++) {
       if (customSort(trains_data[j], trains_data[j + 1]) > 0) {
-        // Swap trains_data[j] and trains_data[j + 1]
+       
         const temp = trains_data[j];
         trains_data[j] = trains_data[j + 1];
         trains_data[j + 1] = temp;
@@ -97,7 +97,7 @@ app.get("/", async (req, res) => {
     res.json(sortedTrains);
   } catch (error) {
     console.error("Error:", error);
-    res.status(500).json({ error: error.message });
+    res.status(200).json({ error: error.message });
   }
 });
 app.get("/getTrain/:trainId", async (req, res) => {
@@ -116,7 +116,7 @@ app.get("/getTrain/:trainId", async (req, res) => {
     res.json(train_data.data);
   } catch (error) {
     console.error("Unable to fetch data", error);
-    res.status(500).json({ error: "Something went wrong" });
+    res.status(200).json({ error: "Something went wrong" });
   }
 });
 
